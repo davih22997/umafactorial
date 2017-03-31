@@ -3,7 +3,11 @@ import java.util.Scanner;
 public class factorial {
 	
 	public static long fact(long num) {
+<<<<<<< HEAD
 		if (num<=0) {
+=======
+		if (num<=1) {
+>>>>>>> recursivo
 			return 1;
 		} else {
 			return num*fact(num-1);
