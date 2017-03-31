@@ -1,0 +1,117 @@
+//Como lo hago desde mi casa para conectarme pongo esto (antes había puesto para conectarme al proxy de la uma porque soy muy inteligente, y eso me ha dado bastantes fallos):
+$ git config --global --unset http.proxy
+
+//Como sigue sin conectarme hago esto:
+echo "# umafactorial" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/davih22997/umafactorial.git
+git push -u origin master
+
+//Me dio error (tenia que registrar mi nombre y mi email):
+git config user.name davih22997
+git config user.email davih22997@gmail.com
+
+//Y ahora hago esto:
+git commit -m "first commit"
+git remote add origin https://github.com/davih22997/umafactorial.git
+git push -u origin master
+
+//Borro el umafactorial debido a un error (lo de README.md era una prueba y no sé quitarlo), y vuelvo a empezar:
+git init
+
+//Creo el archivo factorial.java, y lo añado
+git add factorial.java
+git commit -m "implementación inicial"
+git push -u origin master
+(Si hacía el git remote add origin (...) me daba error porque ya estaba vinculado o algo así).
+
+//Hago lo mismo con la refactorización:
+git add factorial.java
+git commit -m "refactorizacion"
+git push -u origin master
+
+//Creamos la rama "recursivo":
+git checkout -b recursivo
+
+//Modificamos el archivo factorial.java y hacemos el commit
+git add factorial.java
+git commit -m "implementacion recursiva"
+
+//Cambiamos a la rama master:
+git checkout master
+
+//Modificamos factorial.java y lo subimos:
+git add factorial.java
+git commit -m "correccion numeros negativos"
+git push -u origin master
+
+//Se me olvidó subirlo a la rama recursivo, asi que lo hago ahora
+git checkout recursivo
+git push -u origin recursivo
+
+//Vuelvo a la rama master
+git checkout master
+
+//Vuelvo a la rama recursivo, y añado cambios a factorial.java
+git checkout recursivo
+git add factorial.java
+git commit -m "optimizacion"
+git push -u origin recursivo
+
+//Volvemos a master y mezclamos con la rama recursivo
+git checkout master
+git merge recursivo
+
+//Da error por lo que hacemos un commit donde ponga "mezcla de rama recursivo a master"
+git add factorial.java
+git commit -m "mezcla de rama recursivo a master"
+git push -u origin master
+
+//Creamos una nueva rama llamada refacIO
+git checkout -b refacIO
+
+//Cambiamos el codigo de factorial.java y añadimos mediante commit
+git add factorial.java
+git commit -m "refactorizacion de metodo de entrada"
+git push -u origin refacIO
+
+//Volvemos a cambiar el codigo y hacemos add
+git add factorial.java
+
+//Hacemos stash para guardar temporalmente los cambios
+git stash
+
+//Y volvemos a rama master 
+git checkout master
+
+//Cambiamos el code de nuevo y lo subimos
+git add factorial.java
+git commit -m "cambio de long a BigInteger"
+git push -u origin master
+
+//Volvemos a la rama refacIO
+git checkout refacIO
+
+//Cogemos los datos del stash
+git stash pop
+
+//Me da error y tengo que volver a cambiar factorial.java
+git add factorial.java
+git commit -m "refactorizacion de metodo de salida"
+git push -u origin refacIO
+
+//Mezclamos master con refacIO (hay que volver a la rama master)
+git checkout master
+git merge refactIO
+
+//Da error por lo que cambiamos manualmente y hacemos commit
+git add factorial.java
+git commit -m "mezcla de rama refacIO"
+git push -u origin master
+
+//Añadimos este txt a master
+git add comandos-git.txt
+git commit -m "adicion de historial de linea de comandos"
+git push -u origin master
